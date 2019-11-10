@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="">
+<h2 align="center">Related articles to your Search </h2><br />
+  {% for post in queryset %}
+  <div align="center" class="posts-listing col-lg-12">
+    <a class="posts-listing col-lg-8" href="{{ post.get_absolute_url }}"><h4>{{ post.title }}</h4></a>
+    <br />
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
