@@ -13,7 +13,7 @@ SECRET_KEY = 'il@kh4!6xdp1!r^arz)d&3#wr1$e2lxiu%%0l@it&jsfx!9$*+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['thegeeksstation.com', '3.134.54.213']
+ALLOWED_HOSTS = ['thegeeksstation.com']
 
 
 # Application definition
