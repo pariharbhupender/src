@@ -22,12 +22,21 @@
                     <div class="avatar"><img src="{{ post.author.profile_picture.url }}" alt="..." class="img-fluid"></div>
                     <div class="title"><span>{{ post.author.user.username }}</span></div></a>
                   <div class="d-flex align-items-center flex-wrap">
-                    <div class="date"><i class="icon-clock"></i>{{ post.timestamp|timesince }} ago</div>
+                    <div class="date"><i class="icon-clock"></i>{{ post.timestamp|date }} ago</div>
                     <div class="views"><i class="icon-eye"></i>{{ post.view_count }}</div>
-                    <div class="comments meta-last"><i class="icon-comment"></i>{{ post.comment_count }}</div>
+                    <div class="comments meta-last"><i class="icon-comment"></i><span class="fb-comments-count"  data-href="https://thegeeksstation.com/post/{{ post.get_absolute_url }}"></span></div>
+                    <!--<div class="comments meta-last"><i class="icon-comment"></i>{{ post.comment_count }}</div>-->
                   </div>
                 </div>
                 <div class="post-body">
+                  <!-- AddToAny BEGIN -->
+                  <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                    <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                    <a class="a2a_button_facebook"></a>
+                    <a class="a2a_button_twitter"></a>
+                    <a class="a2a_button_email"></a>
+                    <a class="a2a_button_whatsapp"></a>
+                  </div>
                   {{ post.content | safe }}
                 </div>
                 <!--<div class="post-tags"><a href="#" class="tag">#Business</a><a href="#" class="tag">#Tricks</a><a href="#" class="tag">#Financial</a><a href="#" class="tag">#Economy</a></div>-->
@@ -49,7 +58,8 @@
                   </a>
                   {% endif %}
                 </div>
-                <div class="post-comments">
+                <div class="fb-comments" data-href="https://thegeeksstation/post/{{ post.get_absolute_url }}" data-width="700" data-numposts="10"></div>
+                <!--<div class="post-comments">
                   <header>
                     <h3 class="h6">Post Comments<span class="no-of-comments">({{ post.comments.count }})</span></h3>
                   </header>
@@ -76,7 +86,7 @@
                     <div class="row">
                       <!--<div class="form-group col-md-6">
                         <input type="email" name="username" id="useremail" placeholder="Email Address (will not be published)" class="form-control">
-                      </div>-->
+                      </div>
                       <div class="form-group col-md-6">
                         {{ form }}
                       </div>
@@ -88,7 +98,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div>-->
         </main>
         {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %}
       </div>

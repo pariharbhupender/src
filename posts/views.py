@@ -25,7 +25,7 @@ def get_category_count():
     return queryset
 
 def index(request):
-    featured = Post.objects.filter(featured=True)
+    featured = Post.objects.filter(featured=True)[0:5]
     latest = Post.objects.order_by('-timestamp')[0:6]
     context = {
         'object_list': featured,
@@ -35,8 +35,8 @@ def index(request):
 
 def blog(request):
     category_count = get_category_count()
-    most_recent = Post.objects.order_by('-timestamp')[:3]
-    post_list = Post.objects.all()
+    most_recent = Post.objects.order_by('-timestamp')[:5]
+    post_list = Post.objects.filter(top10=False)
     context ={
         'post_list' : post_list,
         'most_recent': most_recent,
@@ -44,7 +44,18 @@ def blog(request):
     }
     return render(request, 'blog.html', context)
 
-def post(request, id):
+def top10(request):
+    category_count = get_category_count()
+    most_recent = Post.objects.order_by('-timestamp')[:5]
+    top10_list = Post.objects.filter(top10=True)
+    context ={
+        'top10_list' : top10_list,
+        'most_recent': most_recent,
+        'category_count': category_count
+    }
+    return render(request, 'top10.html', context)
+
+def post(request, slug, id):
     category_count = get_category_count()
     most_recent = Post.objects.order_by('-timestamp')[:5]
     post = get_object_or_404(Post, id=id)
@@ -55,6 +66,7 @@ def post(request, id):
             form.instance.post = post
             form.save()
             return redirect(reverse("post-detail", kwargs={
+                'slug': post.slug,
                 'id': post.id
             }))
     context = {
