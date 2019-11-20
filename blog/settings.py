@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'tgsdb',
-        'USER': 'tgs_admin',
+        'USER': 'blog_admin',
         'PASSWORD': 'bhupender156',
         'HOST': 'localhost',
         'PORT': '',
