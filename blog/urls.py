@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.sitemaps.views import sitemap
-from blog.sitemaps import PostSitemap, StaticViewSitemap
+from blog.sitesmaps import PostSitemap, StaticViewSitemap
 
 from posts.views import index, blog, post, search, aboutus, top10
 
