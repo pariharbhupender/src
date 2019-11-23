@@ -49,8 +49,9 @@
                 <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                     <div class="avatar"><img src="{{ obj.author.profile_picture.url }}" alt="..." class="img-fluid"></div>
                     <div class="title"><span>{{ obj.author }}</span></div></a>
-                    <div class="date"><i class="icon-clock"></i>{{ obj.timestamp|date }} ago</div>
-                    <div class="comments"><i class="icon-comment"></i>{{ obj.comment_count }}</div>
+                    <div class="date"><i class="icon-clock"></i>{{ obj.timestamp|date }}</div>
+                    <div class="comments meta-last"><i class="icon-comment"></i><span class="fb-comments-count"  data-href="https://thegeeksstation.com/post/{{ post.get_absolute_url }}"></span></div>
+                    <!--<div class="comments"><i class="icon-comment"></i>{{ obj.comment_count }}</div>-->
                 </footer>
               </div>
             </div>
